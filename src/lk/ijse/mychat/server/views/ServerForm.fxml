@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="serverPane" prefHeight="700.0" prefWidth="426.0" styleClass="loginPage" stylesheets="@../../assets/css/loginPageStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.mychat.server.controller.ServerFormController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="130.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/images/playTech.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="26.0" layoutY="143.0" prefHeight="35.0" prefWidth="134.0" text="Server">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtArea" layoutX="14.0" layoutY="209.0" prefHeight="387.0" prefWidth="399.0" stylesheets="@../../assets/css/loginPageStyles.css" />
+      <TextField fx:id="txtMessage" layoutX="78.0" layoutY="617.0" prefHeight="45.0" prefWidth="298.0" styleClass="txtUserName" stylesheets="@../../assets/css/loginPageStyles.css" />
+      <ImageView fx:id="emoji" fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="627.0" onMouseClicked="#emojiOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/images/smile.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="file" fitHeight="25.0" fitWidth="25.0" layoutX="49.0" layoutY="627.0" onMouseClicked="#selectFileOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/images/attach-file.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnSend" fitHeight="35.0" fitWidth="40.0" layoutX="378.0" layoutY="622.0" onMouseClicked="#sendOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/images/send.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="122.0" layoutY="676.0" prefHeight="21.0" prefWidth="222.0" text="copyright © PlayTech pvt.Ltd" textFill="#797474" />
+   </children>
+</AnchorPane>

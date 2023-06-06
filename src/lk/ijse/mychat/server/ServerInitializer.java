@@ -1,7 +1,11 @@
 package lk.ijse.mychat.server;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ServerInitializer extends Application {
 
@@ -10,7 +14,10 @@ public class ServerInitializer extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
+        primaryStage.setScene
+                (new Scene(FXMLLoader.load(getClass().getResource("views/ServerForm.fxml"))));
+        primaryStage.show();
 
     }
 }
