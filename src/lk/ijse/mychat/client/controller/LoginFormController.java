@@ -30,7 +30,7 @@ public class LoginFormController {
             if (!txtHost.getText().equals("")){
                 host=txtHost.getText();
                 Stage stage = new Stage();
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("src/lk/ijse/mychat/client/views/ChatUIForm.fxml"))));
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("views/ChatUIForm.fxml"))));
                 stage.centerOnScreen();
                 stage.show();
             }
