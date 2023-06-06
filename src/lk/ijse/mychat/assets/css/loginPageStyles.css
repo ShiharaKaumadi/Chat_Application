@@ -1,0 +1,52 @@
+
+*{
+    -fx-margin: 0;
+    -fx-padding: 0;
+    -fx-box-sizing: border-box;
+
+}
+
+.loginPage{
+    -fx-height: 100%;
+    -fx-display: grid;
+    -fx-background-color: #dde1e7;
+    text-align: center;
+}
+
+
+.loginTitle{
+    -fx-font-family: "Consolas, Sans-serif";
+    -fx-font-size: 33px;
+    -fx-font-weight: 600;
+    -fx-margin-bottom: 35px;
+
+}
+
+.txtUserName, .txtHost{
+    -fx-background-color: rgba(254, 254, 255, 0.98);
+    -fx-border-color: #9583e5;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-text-fill: #252424;
+    -fx-prompt-text-fill: #b0acac;
+
+}
+
+.btnLogin{
+    -fx-margin: 5px 0;
+    -fx-width:180px;
+    -fx-height: 45px;
+    -fx-font-size :18px;
+    -fx-font-weight:600;
+    -fx-background-color: #dddcea;
+    -fx-text-fill: #2154d3;
+    -fx-border-color: none;
+    -fx-cursor: pointer;
+    -fx-outline:none;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-box-shadow:  2px 2px 5px #8ba6ce,  -5px -5px 10px #326496;
+}
+
+
+
