@@ -2,11 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="serverPane" prefHeight="700.0" prefWidth="426.0" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.mychat.server.ServerFormController">
@@ -21,7 +21,6 @@
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <TextArea fx:id="txtArea" layoutX="14.0" layoutY="209.0" prefHeight="387.0" prefWidth="399.0" stylesheets="@../assets/css/loginPageStyles.css" />
       <TextField fx:id="txtMessage" layoutX="78.0" layoutY="617.0" prefHeight="45.0" prefWidth="298.0" styleClass="txtUserName" stylesheets="@../assets/css/loginPageStyles.css">
          <padding>
             <Insets left="20.0" right="20.0" />
@@ -43,5 +42,6 @@
          </image>
       </ImageView>
       <Label layoutX="122.0" layoutY="676.0" prefHeight="21.0" prefWidth="222.0" text="copyright © PlayTech pvt.Ltd" textFill="#797474" />
+      <Pane fx:id="txtArea" layoutX="14.0" layoutY="189.0" prefHeight="401.0" prefWidth="399.0" style="-fx-background-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" />
    </children>
 </AnchorPane>

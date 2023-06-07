@@ -3,7 +3,6 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -40,7 +39,6 @@
             <URL value="@../assets/css/clientuiStyles.css" />
          </stylesheets>
       </Pane>
-      <TextArea fx:id="txtClientArea" layoutX="7.0" layoutY="103.0" prefHeight="507.0" prefWidth="411.0" />
       <TextField fx:id="txtClientMessage" layoutX="90.0" layoutY="620.0" prefHeight="45.0" prefWidth="273.0" styleClass="txtUserName" stylesheets="@../assets/css/loginPageStyles.css">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -62,5 +60,7 @@
          </image>
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="676.0" prefHeight="21.0" prefWidth="273.0" text="copyright ©playtech pvt.ltd" textAlignment="CENTER" textFill="#8a8686" />
+      <Pane fx:id="txtClientArea" layoutX="17.0" layoutY="139.0" prefHeight="468.0" prefWidth="392.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" />
+      <Label fx:id="lblUser" layoutX="21.0" layoutY="95.0" prefHeight="30.0" prefWidth="222.0" text=" " textFill="#a49a9a" />
    </children>
 </AnchorPane>
