@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="loginPage" minWidth="450.0" prefHeight="700.0" prefWidth="426.0" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.mychat.client.LoginFormController">
+<AnchorPane fx:id="loginPage" prefHeight="700.0" prefWidth="426.0" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.mychat.client.LoginFormController">
    <children>
       <ImageView fx:id="logoImg" fitHeight="178.0" fitWidth="186.0" layoutX="136.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="508.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="136.0" AnchorPane.topAnchor="14.0">
          <image>

@@ -6,45 +6,42 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
+
+import static lk.ijse.mychat.client.LoginFormController.host;
+import static lk.ijse.mychat.client.LoginFormController.username;
 
 public class ChatUIFormController {
     public Pane paneHeader;
     public ImageView call;
-    public Pane txtClientArea;
+    public AnchorPane txtClientArea;
     public ImageView btnSend;
     public TextField txtClientMessage;
     public ImageView emoji;
     public ImageView file;
     public Label lblUser;
     Socket socket =null;
-
+    private Client client;
 
     public  void initialize() throws IOException {
-        socket = new Socket("localhost",5000);
-        InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
-        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-        String record = bufferedReader.readLine();
-        System.out.println(record);
+        client = new Client(new Socket(host,5000),username);
+        lblUser.setText(username);
+        txtClientMessage.requestFocus();
+        client.receiveMessageFromServer(txtClientArea);
     }
 
     public void callOnAction(MouseEvent mouseEvent) {
     }
 
     public void sendClientMsgOnAction(MouseEvent mouseEvent) throws IOException {
-        PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-        printWriter.println(txtClientMessage.getText());
-        printWriter.flush();
         String clientMessage = txtClientMessage.getText();
         if(!clientMessage.isEmpty()){
            Pane pane = new Pane();
@@ -68,5 +65,11 @@ public class ChatUIFormController {
 
     public void emojiOnAction(MouseEvent mouseEvent) throws IOException {
 
+    }
+
+    public static void addLabel(String messageFromClient, AnchorPane anchorPane) {
+    }
+
+    public static void addImage(File fileToDownload, AnchorPane anchorPane, String senderName) {
     }
 }

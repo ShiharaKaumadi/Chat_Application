@@ -29,7 +29,7 @@ public class ServerFormController {
     Socket accept = null;
 
 
-    public void initialize(){
+/*    public void initialize(){
         new Thread(()->{
             try {
                 ServerSocket serverSocket = new ServerSocket(5000);
@@ -42,26 +42,25 @@ public class ServerFormController {
                 String record = bufferedReader.readLine();
                 System.out.println(record);
 
-                  /*  while (true) {
+                    while (true) {
                         if (txtMessage.equals("exit")) {
-                            *//*Socket socket = serverSocket.accept();
+                            Socket socket = serverSocket.accept();
                             System.out.println("client connected ");
                             InputStreamReader isr = new InputStreamReader(socket.getInputStream());
                             BufferedReader bfr = new BufferedReader(isr);
                             String name = bfr.readLine();
                             //System.out.println(name);
-                            Handle client = new Handle(socket, name);
-                            Thread thread = new Thread(client);
-                            thread.start();*//*
+                            HandlingEvents client = new HandlingEvents(socket, name);
+                            Thread thread = new Thread((Runnable) client);
+                            thread.start();
                             System.exit(0);
                         }
                     }
-*/
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }).start();
-    }
+    }*/
 
     public void emojiOnAction(MouseEvent mouseEvent) {
     }
@@ -70,7 +69,9 @@ public class ServerFormController {
     }
 
     public void sendOnAction(MouseEvent mouseEvent) throws IOException {
-
+        ServerSocket serverSocket = new ServerSocket(4000);
+        System.out.println("Server Started");
+        accept = serverSocket.accept();
         PrintWriter printWriter = new PrintWriter(accept.getOutputStream());
         printWriter.println(txtMessage.getText());
         printWriter.flush();

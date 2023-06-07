@@ -60,7 +60,7 @@
          </image>
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="676.0" prefHeight="21.0" prefWidth="273.0" text="copyright ©playtech pvt.ltd" textAlignment="CENTER" textFill="#8a8686" />
-      <Pane fx:id="txtClientArea" layoutX="17.0" layoutY="139.0" prefHeight="468.0" prefWidth="392.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" />
       <Label fx:id="lblUser" layoutX="21.0" layoutY="95.0" prefHeight="30.0" prefWidth="222.0" text=" " textFill="#a49a9a" />
+      <AnchorPane fx:id="txtClientArea" layoutX="21.0" layoutY="142.0" prefHeight="448.0" prefWidth="382.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" />
    </children>
 </AnchorPane>

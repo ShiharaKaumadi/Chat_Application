@@ -24,24 +24,26 @@ public class LoginFormController {
     public AnchorPane loginPage;
     public Pane content;
     public ImageView close;
+    public static String username;
+    public static String host;
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
         if (!txtUsername.getText().equals("")) {
-            String username = txtUsername.getText();
+            username = txtUsername.getText();
 
             if (!txtHost.getText().equals("")) {
-               Stage log = (Stage) loginPage.getScene().getWindow();
-                log.close();
-                String host = txtHost.getText();
+                Stage stg = (Stage) loginPage.getScene().getWindow();
+                stg.close();
+                host = txtHost.getText();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("ChatUIForm.fxml"))));
                 stage.setResizable(false);
                 stage.centerOnScreen();
                 stage.show();
             } else {
-               Stage log = (Stage) loginPage.getScene().getWindow();
-                log.close();
-
+               Stage stg = (Stage) loginPage.getScene().getWindow();
+                stg.close();
+                host="localhost";
                 Stage stage = new Stage();
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("ChatUIForm.fxml"))));
                 stage.setResizable(false);
