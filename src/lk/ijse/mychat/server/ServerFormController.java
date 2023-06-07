@@ -1,4 +1,4 @@
-package lk.ijse.mychat.server.controller;
+package lk.ijse.mychat.server;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -22,11 +22,11 @@ public class ServerFormController {
     public ImageView btnSend;
     Socket accept = null;
 
+
     public void initialize(){
         new Thread(()->{
-            final int PORT=4000;
             try {
-                ServerSocket serverSocket = new ServerSocket(PORT);
+                ServerSocket serverSocket = new ServerSocket(5000);
                 System.out.println("Server Started");
                 accept = serverSocket.accept();
                 System.out.println("Client Connected");
@@ -35,10 +35,25 @@ public class ServerFormController {
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 String record = bufferedReader.readLine();
                 System.out.println(record);
+
+                  /*  while (true) {
+                        if (txtMessage.equals("exit")) {
+                            *//*Socket socket = serverSocket.accept();
+                            System.out.println("client connected ");
+                            InputStreamReader isr = new InputStreamReader(socket.getInputStream());
+                            BufferedReader bfr = new BufferedReader(isr);
+                            String name = bfr.readLine();
+                            //System.out.println(name);
+                            Handle client = new Handle(socket, name);
+                            Thread thread = new Thread(client);
+                            thread.start();*//*
+                            System.exit(0);
+                        }
+                    }
+*/
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }).start();
     }
 
@@ -49,8 +64,10 @@ public class ServerFormController {
     }
 
     public void sendOnAction(MouseEvent mouseEvent) throws IOException {
+
         PrintWriter printWriter = new PrintWriter(accept.getOutputStream());
         printWriter.println(txtMessage.getText());
         printWriter.flush();
+
     }
 }

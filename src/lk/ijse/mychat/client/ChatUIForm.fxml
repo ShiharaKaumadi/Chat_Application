@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -10,17 +11,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="426.0" styleClass="loginPage" stylesheets="@../../assets/css/loginPageStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.mychat.client.controller.ChatUIFormController">
+<AnchorPane prefHeight="700.0" prefWidth="426.0" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.mychat.client.ChatUIFormController">
    <children>
-      <Pane fx:id="paneHeader" prefHeight="95.0" prefWidth="426.0" styleClass="paneHeader" stylesheets="@../../assets/css/clientuiStyles.css">
+      <Pane fx:id="paneHeader" prefHeight="95.0" prefWidth="426.0" styleClass="paneHeader">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
             <ImageView fitHeight="84.0" fitWidth="88.0" layoutX="-9.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../assets/images/playTech.png" />
+                  <Image url="@../assets/images/playTech.png" />
                </image>
             </ImageView>
             <Label layoutX="75.0" layoutY="14.0" prefHeight="34.0" prefWidth="240.0" text="Play Tech" textFill="#ab44cd">
@@ -31,30 +31,34 @@
             <Label layoutX="75.0" layoutY="60.0" prefHeight="21.0" prefWidth="304.0" text="Tap here to see the group members" textFill="#867e7e" />
             <ImageView fx:id="call" fitHeight="30.0" fitWidth="30.0" layoutX="379.0" layoutY="16.0" onMouseClicked="#callOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../assets/images/telephone.png" />
+                  <Image url="@../assets/images/close.png" />
                </image>
             </ImageView>
          </children>
+         <stylesheets>
+            <URL value="@../../mychat/assets/css/clientuiStyles.css" />
+            <URL value="@../assets/css/clientuiStyles.css" />
+         </stylesheets>
       </Pane>
       <TextArea fx:id="txtClientArea" layoutX="7.0" layoutY="103.0" prefHeight="507.0" prefWidth="411.0" />
-      <TextField fx:id="txtClientMessage" layoutX="90.0" layoutY="620.0" prefHeight="45.0" prefWidth="273.0" styleClass="txtUserName" stylesheets="@../../assets/css/loginPageStyles.css">
+      <TextField fx:id="txtClientMessage" layoutX="90.0" layoutY="620.0" prefHeight="45.0" prefWidth="273.0" styleClass="txtUserName" stylesheets="@../assets/css/loginPageStyles.css">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </TextField>
       <ImageView fx:id="btnSend" fitHeight="45.0" fitWidth="38.0" layoutX="374.0" layoutY="624.0" onMouseClicked="#sendClientMsgOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../assets/images/send.png" />
+            <Image url="@../assets/images/send.png" />
          </image>
       </ImageView>
       <ImageView fx:id="emoji" fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="628.0" onMouseClicked="#emojiOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../assets/images/smile.png" />
+            <Image url="@../assets/images/smile.png" />
          </image>
       </ImageView>
       <ImageView fx:id="file" fitHeight="30.0" fitWidth="30.0" layoutX="44.0" layoutY="628.0" onMouseClicked="#fileClickOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../assets/images/attach-file.png" />
+            <Image url="@../assets/images/attach-file.png" />
          </image>
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="676.0" prefHeight="21.0" prefWidth="273.0" text="copyright ©playtech pvt.ltd" textAlignment="CENTER" textFill="#8a8686" />

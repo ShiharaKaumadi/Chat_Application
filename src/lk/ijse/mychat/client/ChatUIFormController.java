@@ -1,4 +1,4 @@
-package lk.ijse.mychat.client.controller;
+package lk.ijse.mychat.client;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -23,7 +23,7 @@ public class ChatUIFormController {
     Socket socket =null;
 
     public  void initialize() throws IOException {
-        socket = new Socket("localhost",4000);
+        socket = new Socket("localhost",5000);
         InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         String record = bufferedReader.readLine();
@@ -33,15 +33,17 @@ public class ChatUIFormController {
     public void callOnAction(MouseEvent mouseEvent) {
     }
 
-    public void sendClientMsgOnAction(MouseEvent mouseEvent) {
+    public void sendClientMsgOnAction(MouseEvent mouseEvent) throws IOException {
+        PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
+        printWriter.println(txtClientMessage.getText());
+        printWriter.write(txtClientArea.getSelectedText());
+        printWriter.flush();
     }
 
     public void fileClickOnAction(MouseEvent mouseEvent) {
     }
 
     public void emojiOnAction(MouseEvent mouseEvent) throws IOException {
-        PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-        printWriter.println(txtClientMessage.getText());
-        printWriter.flush();
+
     }
 }
