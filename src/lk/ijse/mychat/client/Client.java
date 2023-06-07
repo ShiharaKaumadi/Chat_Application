@@ -64,6 +64,7 @@ public class Client {
     }
 
 
+
     public void receiveMessageFromServer(AnchorPane anchorPane) {
         new Thread(new Runnable() {
             @Override
