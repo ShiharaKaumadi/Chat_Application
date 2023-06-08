@@ -1,8 +1,13 @@
 package lk.ijse.mychat.client;
 
+import javafx.application.Platform;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+
 
 import java.io.*;
 import java.net.Socket;
@@ -15,6 +20,7 @@ public class Client {
     private Socket socket;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
+    String senderName;
 
     public Client(Socket socket, String name) {
         try {
@@ -82,6 +88,8 @@ public class Client {
     /*method continuously reads messages from the server using the BufferedReader.
      If a message starts with "FILE:", it indicates a file is being received.
      The file name and content are read from the input stream and added to the UI.*/
+// Other imports...
+
     public void receiveMessageFromServer(VBox vBox) {
         new Thread(new Runnable() {
             @Override
@@ -93,29 +101,32 @@ public class Client {
                             DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                             int fileNameLength = dataInputStream.readInt();
                             if (fileNameLength > 0) {
-                                System.out.println(fileNameLength);
-
                                 byte[] fileNameByte = new byte[fileNameLength];
                                 dataInputStream.readFully(fileNameByte, 0, fileNameByte.length);
-                                System.out.println(fileNameByte.length);
                                 String fileName = new String(fileNameByte);
                                 String senderName = messageFromClient.split(":")[1];
-                                System.out.println(senderName + " client receive " + fileName);
 
                                 int fileContentLength = dataInputStream.readInt();
                                 if (fileContentLength > 0) {
                                     byte[] fileContentByte = new byte[fileContentLength];
                                     dataInputStream.readFully(fileContentByte, 0, fileContentLength);
-                                    File fileToDownload = new File(fileName);
-                                    ChatUIFormController.addImage(fileToDownload, vBox, senderName);
+
+                                    Platform.runLater(() -> {
+                                        Image image = new Image(new ByteArrayInputStream(fileContentByte));
+                                        ImageView fileToDownload = new ImageView(image);
+                                        ChatUIFormController.addImage(fileToDownload, vBox, senderName);
+                                    });
                                 }
                             }
                         } else {
-                            ChatUIFormController.addLabel(messageFromClient, vBox);
+                            String senderName = ""; // Set the sender name accordingly
+                            Platform.runLater(() -> {
+                                ChatUIFormController.addLabel(messageFromClient, vBox, senderName);
+                            });
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
-                        System.out.println("error reading message form client");
+                        System.out.println("Error reading message from client");
                         closeEverything(socket, bufferedReader, bufferedWriter);
                         break;
                     }

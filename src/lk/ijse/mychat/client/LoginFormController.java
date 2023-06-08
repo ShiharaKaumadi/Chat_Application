@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -38,6 +39,10 @@ public class LoginFormController {
                 host = txtHost.getText();
                 Stage stage = new Stage();
                 stage.setScene(scene);
+                stage.setTitle("Play Tech Group Chat");
+                Image iconImage = new Image("lk/ijse/mychat/assets/images/playTech.png");
+                // Set the icon on the stage
+                stage.getIcons().add(iconImage);
                 stage.setResizable(false);
                 scene.getStylesheets().add("lk/ijse/mychat/assets/css/clientuiStyles.css");
                 stage.centerOnScreen();

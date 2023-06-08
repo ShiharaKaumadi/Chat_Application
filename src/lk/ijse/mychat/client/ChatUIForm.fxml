@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -38,7 +38,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btnMinimize" layoutX="308.0" layoutY="11.0" onAction="#btnMinimizeOnAction" prefHeight="31.0" prefWidth="30.0" style="-fx-border-color: grey; -fx-border-radius: 10px;" text=" ">
+            <JFXButton fx:id="btnMinimize" layoutX="308.0" layoutY="11.0" onAction="#btnMinimizeOnAction" prefHeight="21.0" prefWidth="41.0" style="-fx-border-color: grey; -fx-border-radius: 10px;" text=" ">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,10 +48,6 @@
                </graphic>
             </JFXButton>
          </children>
-         <stylesheets>
-            <URL value="@../assets/css/clientuiStyles.css" />
-            <URL value="@../assets/css/clientuiStyles.css" />
-         </stylesheets>
       </Pane>
       <TextField fx:id="txtClientMessage" layoutX="96.0" layoutY="620.0" prefHeight="45.0" prefWidth="240.0" styleClass="txtUserName" stylesheets="@../assets/css/loginPageStyles.css">
          <padding>
@@ -75,20 +71,17 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="emoji" layoutX="7.0" layoutY="626.0" onAction="#btnSendEmojiOnAction" prefHeight="40.0" prefWidth="46.0" style="-fx-border-color: #9583e5; -fx-background-radius: 10px; -fx-border-radius: 10px;" text=" ">
-         <graphic>
-            <ImageView fx:id="emojis" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#emojiOnAction" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/images/smile.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <VBox fx:id="txtClientArea" layoutX="16.0" layoutY="101.0" prefHeight="506.0" prefWidth="393.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
-         <stylesheets>
-            <URL value="@../assets/css/loginPageStyles.css" />
-            <URL value="@../assets/css/clientuiStyles.css" />
-         </stylesheets>
-      </VBox>
+      <ScrollPane fx:id="scrollPane" layoutX="21.0" layoutY="134.0" prefHeight="473.0" prefWidth="382.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;">
+         <content>
+            <VBox fx:id="txtClientArea" prefHeight="474.0" prefWidth="380.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
+
+            </VBox>
+         </content>
+      </ScrollPane>
+      <ImageView fx:id="emojis" fitHeight="30.0" fitWidth="30.0" layoutX="28.0" layoutY="626.0" onMouseClicked="#emojiOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/smile.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

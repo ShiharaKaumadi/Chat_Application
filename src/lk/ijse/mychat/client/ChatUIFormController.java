@@ -3,10 +3,12 @@ package lk.ijse.mychat.client;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,16 +40,20 @@ public class ChatUIFormController {
     public JFXButton btnSend;
     public TextField txtClientMessage;
     public ImageView file;
-    public Label lblUser;
+    @FXML
+    private  Label lblUser;
     public JFXButton emoji;
     public ImageView emojis;
     public JFXButton close;
     public HBox hBox;
     public JFXButton btnMinimize;
     public AnchorPane mainStage;
+    @FXML
+    private ScrollPane scrollPane;
     Socket socket = null;
     private Client client;
     private BufferedWriter writer;
+
 
 /*Change the anchor pane which holds messaages into VBox because each message lies top of the first message.*/
 /*The issue of the second message HBox laying on top of the first message HBox is because the HBox instances
@@ -58,28 +64,47 @@ The VBox will automatically arrange its child nodes in a vertical stack, ensurin
 is placed below the previous one.*/
 
     /*New Version*/
+    @FXML
+    public void initialize() throws IOException {
+        client = new Client(new Socket(host, 5000), username);
+        lblUser.setText(username);
+        txtClientMessage.requestFocus();
+        client.receiveMessageFromServer(txtClientArea);
 
-    public static void addLabel(String messageFromClient, VBox vBox) {
+      /*  addLabel("", txtClientArea, username); // Pass lblUser as the third parameter
+        addImage(file, txtClientArea, username); // Pass lblUser as the third parameter*/
+
+        // Set CSS class to the ScrollPane
+        /*scrollPane.getStyleClass().add(getResource("lk/ijse/mychat/assets/css/clientuiStyles.css").toExternalForm()); // Load external CSS file*/
+    }
+
+    public static void addLabel(String messageFromClient, VBox vBox, String sender) {
         Platform.runLater(() -> {
             HBox hBox = new HBox();
             Scene scene = new Scene(hBox);
-
-            hBox.setSpacing(5); // Set the horizontal spacing within the HBox
+            hBox.setSpacing(10); // Set the horizontal spacing within the HBox
             hBox.setPadding(new Insets(10));
             hBox.setAlignment(Pos.CENTER_LEFT);
-            hBox.setPadding(new Insets(5, 10, 5, 10));
-
+            hBox.setPadding(new Insets(5, 10, 5, 5));
             Text text = new Text(messageFromClient);
             TextFlow textFlow = new TextFlow(text);
             textFlow.setStyle("-fx-background-color: rgb(206,203,203);" + "-fx-background-radius: 10px");
             textFlow.setPadding(new Insets(5, 10, 5, 10));
             hBox.getChildren().add(textFlow);
 
+
+            if (username != null && username.equals(sender)) {
+                // Sender's message, align to the right
+                hBox.setAlignment(Pos.CENTER_LEFT);
+            } else {
+                // Receiver's message, align to the left
+                hBox.setAlignment(Pos.CENTER_RIGHT);
+            }
             vBox.getChildren().add(hBox);
         });
     }
 
-    public static void addImage(File fileToDownload, VBox vBox, String senderName) {
+    public static void addImage(ImageView fileToDownload, VBox vBox, String senderName) {
         Platform.runLater(() -> {
             HBox hBox = new HBox();
             Scene scene = new Scene(hBox);
@@ -92,15 +117,29 @@ is placed below the previous one.*/
             hBox.setPadding(new Insets(5, 10, 5, 10));
             Text text = new Text(senderName);
             vBox1.getChildren().add(text);
-            Image image = new Image("file:" + fileToDownload.getAbsolutePath());
+            Image image = new Image("file:" + fileToDownload.getImage());
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(100);
             imageView.setFitHeight(100);
             vBox1.setPadding(new Insets(5, 10, 5, 10));
             vBox1.getChildren().add(imageView);
             hBox.getChildren().add(vBox1);
+
+            if (senderName != null && senderName.equals(username)) {
+                // Sender's message, align to the right
+                hBox.setAlignment(Pos.CENTER_LEFT);
+            } else {
+                // Receiver's message, align to the left
+                hBox.setAlignment(Pos.CENTER_RIGHT);
+            }
+
+            vBox.getChildren().add(hBox);
         });
     }
+
+
+
+
 
     private static String getFileExtension(Path filePath) {
         String fileName = filePath.getFileName().toString();
@@ -111,12 +150,6 @@ is placed below the previous one.*/
         return "";
     }
 
-    public void initialize() throws IOException {
-        client = new Client(new Socket(host, 5000), username);
-        lblUser.setText(username);
-        txtClientMessage.requestFocus();
-        client.receiveMessageFromServer(txtClientArea);
-    }
 
     public void callOnAction(MouseEvent mouseEvent) {
     }
@@ -154,11 +187,12 @@ is placed below the previous one.*/
 
                     hBox1.setSpacing(5); // Set the horizontal spacing within the HBox
                     hBox1.setPadding(new Insets(10));
-                    hBox1.setAlignment(Pos.BASELINE_LEFT);
+                    hBox1.setAlignment(Pos.CENTER_RIGHT);
                     hBox1.setPadding(new Insets(5, 10, 5, 10));
                     hBox1.getChildren().add(text);
                     txtClientArea.getChildren().add(hBox1);
                     client.sendDocumentsToServer(file, username);
+
                 }
             }
         });
@@ -189,15 +223,6 @@ is placed below the previous one.*/
         });
     }
 
-    public void btnSendEmojiOnAction(ActionEvent actionEvent) throws IOException {
-        Emoji emoji1 = new Emoji();
-        String smileEmoji = emoji1.getSmileEmoji();
-        txtClientMessage.setText(smileEmoji);
-        encodeEmojis(smileEmoji);
-        client.sendMessageToServer(username + " : " + smileEmoji);
-
-
-    }
 
     private String encodeEmojis(String message) {
         // Replace Unicode representations with actual Unicode characters
@@ -212,7 +237,35 @@ is placed below the previous one.*/
     }
 
     public void emojiOnAction(MouseEvent mouseEvent) {
+        // Assuming an ImageView called emojiImageView and a TextField called textField
+        emojis.setOnMouseClicked(event -> {
+            // Get the selected emoji (unicode representation) from the Emoji class or any other source
+            Emoji emoji1 = new Emoji();
+            // Replace with your actual way of getting the selected emoji
+            String smileEmoji = emoji1.getSmileEmoji();
+
+            // Set the selected emoji in the text field
+            txtClientMessage.setText(smileEmoji);
+        });
+
+        // Assuming you have a Button called sendButton
+        try {
+            btnSend.setOnAction(event -> {
+                // Get the emoji text from the text field
+                String emojiText = txtClientMessage.getText();
+
+                // Perform the necessary actions to send the emoji to the server or receiver
+                // For example, you can call a method on your client object to send the emoji
+                client.sendMessageToServer(username + ": " + emojiText);
+                client.receiveMessageFromServer(txtClientArea); // Update the receiver's UI
+            });
+        }catch (NullPointerException e){
+            System.out.println("Please Click inside the Image Correctly");
+        }
+
     }
+
+
 
 
     public void btnMinimizeOnAction(ActionEvent actionEvent) {

@@ -15,6 +15,7 @@ public class Emoji {
         this.smileEmoji = smileEmoji;
     }
 
+
     public Emoji() {
     }
 
