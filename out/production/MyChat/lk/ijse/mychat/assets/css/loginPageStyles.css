@@ -1,12 +1,5 @@
 
-*{
-    -fx-margin: 0;
-
-    -fx-box-sizing: border-box;
-
-}
-
-.loginPage{
+.loginPage {
     -fx-height: 100%;
     -fx-display: grid;
     -fx-background-color: #dde1e7;
@@ -14,7 +7,7 @@
 }
 
 
-.loginTitle{
+.loginTitle {
     -fx-font-family: "Consolas, Sans-serif";
     -fx-font-size: 33px;
     -fx-font-weight: 600;
@@ -22,7 +15,7 @@
 
 }
 
-.txtUserName, .txtHost{
+.txtUserName, .txtHost {
     -fx-background-color: rgba(254, 254, 255, 0.98);
     -fx-border-color: #9583e5;
     -fx-background-radius: 25px;
@@ -32,22 +25,20 @@
 
 }
 
-.btnLogin{
+.btnLogin {
     -fx-margin: 5px 0;
-    -fx-width:180px;
+    -fx-width: 180px;
     -fx-height: 45px;
-    -fx-font-size :18px;
-    -fx-font-weight:600;
+    -fx-font-size: 18px;
+    -fx-font-weight: 600;
     -fx-background-color: #dddcea;
     -fx-text-fill: #2154d3;
     -fx-border-color: none;
     -fx-cursor: pointer;
-    -fx-outline:none;
+    -fx-outline: none;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
 
 }
 
 
-.content {
-}

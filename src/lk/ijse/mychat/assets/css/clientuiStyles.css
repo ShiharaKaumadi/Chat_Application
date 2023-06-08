@@ -1,5 +1,12 @@
-.paneHeader{
+.paneHeader {
     -fx-border-color: #dde1e7;
     -fx-background-color: #dde1e7;
 
+}
+
+hBox, hBox1, pane{
+    -fx-content-display: flex;
+    -fx-hgap: 20px;
+    -fx-vgap: 20px;
+    -fx-max-width: 100%;
 }

@@ -7,7 +7,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
-
 public class Server {
     private final ServerSocket serverSocket;
 
@@ -16,11 +15,13 @@ public class Server {
     }
 
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket=new ServerSocket(5000);
-        Server server  = new Server(serverSocket);
+        ServerSocket serverSocket = new ServerSocket(5000);
+        Server server = new Server(serverSocket);
         server.startServer();
 
     }
+
+
 
     public void startServer() {
         try {
@@ -34,7 +35,7 @@ public class Server {
                 Thread thread = new Thread(handlingEvents);
                 thread.start();
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

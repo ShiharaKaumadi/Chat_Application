@@ -76,20 +76,20 @@ public class ServerFormController {
         printWriter.println(txtMessage.getText());
         printWriter.flush();
         String clientMessage = txtMessage.getText();
-        if (!clientMessage.isEmpty()){
+        if (!clientMessage.isEmpty()) {
             Pane pane = new Pane();
-            pane.setPadding(new Insets(10,5,5,10));
+            pane.setPadding(new Insets(10, 5, 5, 10));
             pane.setLayoutX(10);
             Text text = new Text(clientMessage);
             TextFlow textFlow = new TextFlow(text);
-            textFlow.setStyle("-fx-background-color: #0c78b2;"+"-fx-background-radius: 10px");
-            textFlow.setPadding(new Insets(10,10,10,10));
-            text.setFill(Color.color(1,1,1));
+            textFlow.setStyle("-fx-background-color: #0c78b2;" + "-fx-background-radius: 10px");
+            textFlow.setPadding(new Insets(10, 10, 10, 10));
+            text.setFill(Color.color(1, 1, 1));
             pane.getChildren().add(textFlow);
             txtArea.getChildren().add(pane);
             txtMessage.clear();
-            pane.setPadding(new Insets(0,0,30,0)); ;// Set horizontal gap
-
+            pane.setPadding(new Insets(0, 0, 30, 0));
+            // Set horizontal gap
 
 
         }

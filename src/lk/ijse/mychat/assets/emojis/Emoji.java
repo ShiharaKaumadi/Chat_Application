@@ -2,8 +2,8 @@ package lk.ijse.mychat.assets.emojis;
 
 public class Emoji {
     String smileEmoji = "\uD83D\uDE03";
-    String redHeart ="U+2764 U+FE0F U+200D U+2764 U+FE0F";
-    String thumbsUp ="U+1F44D";
+    String redHeart = "U+2764 U+FE0F U+200D U+2764 U+FE0F";
+    String thumbsUp = "U+1F44D";
 
     public Emoji(String smileEmoji, String redHeart, String thumbsUp) {
         this.smileEmoji = smileEmoji;

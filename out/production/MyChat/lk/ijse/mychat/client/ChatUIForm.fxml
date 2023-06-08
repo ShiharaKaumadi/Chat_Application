@@ -29,14 +29,15 @@
                </font>
             </Label>
             <Label layoutX="75.0" layoutY="60.0" prefHeight="21.0" prefWidth="304.0" text="Tap here to see the group members" textFill="#867e7e" />
-            <ImageView fx:id="call" fitHeight="30.0" fitWidth="30.0" layoutX="379.0" layoutY="16.0" onMouseClicked="#callOnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="call" fitHeight="21.0" fitWidth="20.0" layoutX="374.0" layoutY="19.0" onMouseClicked="#callOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/close.png" />
                </image>
             </ImageView>
+            <JFXButton fx:id="close" layoutX="367.0" layoutY="8.0" onAction="#btnCloseOnAction" prefHeight="40.0" prefWidth="39.0" text=" " />
          </children>
          <stylesheets>
-            <URL value="@../../mychat/assets/css/clientuiStyles.css" />
+            <URL value="@../assets/css/clientuiStyles.css" />
             <URL value="@../assets/css/clientuiStyles.css" />
          </stylesheets>
       </Pane>
@@ -52,7 +53,11 @@
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="676.0" prefHeight="21.0" prefWidth="273.0" text="copyright ©playtech pvt.ltd" textAlignment="CENTER" textFill="#8a8686" />
       <Label fx:id="lblUser" layoutX="21.0" layoutY="95.0" prefHeight="30.0" prefWidth="222.0" text=" " textFill="#a49a9a" />
-      <AnchorPane fx:id="txtClientArea" layoutX="21.0" layoutY="142.0" prefHeight="448.0" prefWidth="382.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" />
+      <AnchorPane fx:id="txtClientArea" layoutX="21.0" layoutY="142.0" prefHeight="448.0" prefWidth="382.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="loginPage">
+         <stylesheets>
+            <URL value="@../assets/css/loginPageStyles.css" />
+            <URL value="@../assets/css/clientuiStyles.css" />
+         </stylesheets></AnchorPane>
       <JFXButton layoutX="347.0" layoutY="628.0" onAction="#btnSendOnAction" text=" ">
 
          <graphic>

@@ -1,0 +1,94 @@
+1.Explain the difference between print() and printf
+
+2.Describe the following lines
+	double maths, science, english;
+	maths=20;
+	int count =20, attendance;
+	System.out.print("Total Students: "+count);
+	import java.util.Scanner;
+	Scanner inputValue = new Scanner(System.in);
+	int number = inputValue.nextInt();
+	
+
+3. Write the output of the following code for both cases.
+	import java.util.Scanner;//line 1
+	class Story{
+		public static void main (String args[]){
+			String title = "Yong Woo's Toys";
+			String authorName = "Tom";
+			double price = 250.00;
+			System.out.println("Children's Corner\tTitle: "+title+" By " + authorName);
+			Scanner onHand = new Scanner(System.in);
+			System.out.print("Enter the Money on hand: ");
+			double onHandMoney = onHand.nextDouble();
+			if(onHandMoney >= price){
+				System.out.println("You can buy the book");
+			}else{
+				System.out.println("No worries");
+			}
+		}
+	}
+
+4. Write a java programe to reverse your full name.
+
+5. Write a java programme to print the following star pattern.
+		*
+	*		*
+*		*		*
+	*		*
+		*
+
+6. Suppose there a 10 students in a class. 
+The teacher in charge in the class wants to test the students knowledge on science lesson.
+She gives a mcq paper to each student. MCQ paper contains 10 questions . 
+Each Question has five answers A, B, C, D, E respectively. 
+There is only one answer for each separate question. 
+All students should answer all questions.
+
+Teacher wants to store each students' answers in a 2D array.
+ 
+She has the answers of those questions in a 1D array.
+Answers: D B D E C A B C A C 
+
+You have to write a java programe to get marks out of 10 (of each student)
+
+7. Write a java program to swap two numbers.
+
+8. Write a java programme to print the folllowing pattern.
+	*****
+	****
+	***
+	**
+	*
+
+9.Write a java method to find the no of digits in a given number using while loop.
+
+10. Define a java method that makes an integer value and returns the number with its digits are reversed.
+Ex: if given number is 7631 the function of method should return the value 1367.
+
+11. Descibe the following statements 
+	
+
+12. Write a java programme to count the occurence of each element in the array.
+
+
+13. Identify the number of loops and write a short description on each. (with example java program).
+
+14. Descibe the usage of switch case.
+ 
+15. Define the term life time of variable
+
+16. Define the terms method and method overloading.
+
+17. Define the term variable.
+
+18. Where can we use continue statement and define the usage of continue statement.
+
+19. Define the usage of return statement.
+
+20. Where do we use break statement and define the usage of break statement.
+
+
+
+
+
