@@ -9,9 +9,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="426.0" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.mychat.client.ChatUIFormController">
+<AnchorPane fx:id="mainStage" prefHeight="700.0" prefWidth="426.0" styleClass="loginPage" stylesheets="@../assets/css/loginPageStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.mychat.client.ChatUIFormController">
    <children>
       <Pane fx:id="paneHeader" prefHeight="95.0" prefWidth="426.0" styleClass="paneHeader">
          <padding>
@@ -29,12 +30,23 @@
                </font>
             </Label>
             <Label layoutX="75.0" layoutY="60.0" prefHeight="21.0" prefWidth="304.0" text="Tap here to see the group members" textFill="#867e7e" />
-            <ImageView fx:id="call" fitHeight="21.0" fitWidth="20.0" layoutX="374.0" layoutY="19.0" onMouseClicked="#callOnAction" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/images/close.png" />
-               </image>
-            </ImageView>
-            <JFXButton fx:id="close" layoutX="367.0" layoutY="8.0" onAction="#btnCloseOnAction" prefHeight="40.0" prefWidth="39.0" text=" " />
+            <JFXButton fx:id="close" layoutX="365.0" layoutY="11.0" onAction="#btnCloseOnAction" prefHeight="21.0" prefWidth="30.0" style="-fx-border-color: red; -fx-border-radius: 10px;" text=" ">
+               <graphic>
+                  <ImageView fx:id="call" fitHeight="21.0" fitWidth="20.0" onMouseClicked="#callOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnMinimize" layoutX="308.0" layoutY="11.0" onAction="#btnMinimizeOnAction" prefHeight="31.0" prefWidth="30.0" style="-fx-border-color: grey; -fx-border-radius: 10px;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/minus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
          <stylesheets>
             <URL value="@../assets/css/clientuiStyles.css" />
@@ -53,12 +65,7 @@
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="676.0" prefHeight="21.0" prefWidth="273.0" text="copyright ©playtech pvt.ltd" textAlignment="CENTER" textFill="#8a8686" />
       <Label fx:id="lblUser" layoutX="21.0" layoutY="95.0" prefHeight="30.0" prefWidth="222.0" text=" " textFill="#a49a9a" />
-      <AnchorPane fx:id="txtClientArea" layoutX="21.0" layoutY="142.0" prefHeight="448.0" prefWidth="382.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="loginPage">
-         <stylesheets>
-            <URL value="@../assets/css/loginPageStyles.css" />
-            <URL value="@../assets/css/clientuiStyles.css" />
-         </stylesheets></AnchorPane>
-      <JFXButton layoutX="347.0" layoutY="628.0" onAction="#btnSendOnAction" text=" ">
+      <JFXButton layoutX="347.0" layoutY="628.0" onAction="#btnSendOnAction" style="-fx-border-color: #9583e5; -fx-background-radius: 10px; -fx-border-radius: 10px;" text=" ">
 
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -68,7 +75,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="emoji" layoutX="7.0" layoutY="626.0" onAction="#btnSendEmojiOnAction" prefHeight="40.0" prefWidth="46.0" text=" ">
+      <JFXButton fx:id="emoji" layoutX="7.0" layoutY="626.0" onAction="#btnSendEmojiOnAction" prefHeight="40.0" prefWidth="46.0" style="-fx-border-color: #9583e5; -fx-background-radius: 10px; -fx-border-radius: 10px;" text=" ">
          <graphic>
             <ImageView fx:id="emojis" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#emojiOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -77,5 +84,11 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <VBox fx:id="txtClientArea" layoutX="16.0" layoutY="101.0" prefHeight="506.0" prefWidth="393.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
+         <stylesheets>
+            <URL value="@../assets/css/loginPageStyles.css" />
+            <URL value="@../assets/css/clientuiStyles.css" />
+         </stylesheets>
+      </VBox>
    </children>
 </AnchorPane>

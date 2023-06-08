@@ -1,12 +1,15 @@
 package lk.ijse.mychat.client;
 
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
 import java.nio.file.Path;
+
+/*Client-Side Implementation which allows sending messages and files to the server
+and receiving messages and files from the server.*/
 
 public class Client {
     private Socket socket;
@@ -37,6 +40,7 @@ public class Client {
         return "";
     }
 
+    /*method sends a text message to the server by writing it to the BufferedWriter.*/
     public void sendMessageToServer(String messageToServer) {
         try {
             bufferedWriter.write(messageToServer);
@@ -49,6 +53,7 @@ public class Client {
         }
     }
 
+    /*method sends a text message to the server by writing it to the BufferedWriter.*/
     public void sendFileToServer(File file, String name) {
         try {
             PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
@@ -74,7 +79,10 @@ public class Client {
         }
     }
 
-    public void receiveMessageFromServer(AnchorPane anchorPane) {
+    /*method continuously reads messages from the server using the BufferedReader.
+     If a message starts with "FILE:", it indicates a file is being received.
+     The file name and content are read from the input stream and added to the UI.*/
+    public void receiveMessageFromServer(VBox vBox) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -99,11 +107,11 @@ public class Client {
                                     byte[] fileContentByte = new byte[fileContentLength];
                                     dataInputStream.readFully(fileContentByte, 0, fileContentLength);
                                     File fileToDownload = new File(fileName);
-                                    ChatUIFormController.addImage(fileToDownload, anchorPane, senderName);
+                                    ChatUIFormController.addImage(fileToDownload, vBox, senderName);
                                 }
                             }
                         } else {
-                            ChatUIFormController.addLabel(messageFromClient, anchorPane);
+                            ChatUIFormController.addLabel(messageFromClient, vBox);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -132,6 +140,7 @@ public class Client {
         }
     }
 
+    /*method is responsible for displaying a file chooser dialog and getting the selected file's extension.*/
     public void sendDocumentsToServer(File file, String name) {
         // Create a file chooser
         FileChooser fileChooser = new FileChooser();

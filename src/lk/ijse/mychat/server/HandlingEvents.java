@@ -98,7 +98,8 @@ this method does nothing and returns.*/
     When we implement class with  Runnable interface we should override the method run()*/
     @Override
 
-    /*Logic for handling clients msgs */ public void run() {
+    /*Logic for handling clients msgs */
+    public void run() {
         String clientMessage;
 
     /*It reads messages from the bufferedReader and checks if the message is a file download request.

@@ -20,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import lk.ijse.mychat.assets.emojis.Emoji;
 
 import java.io.BufferedWriter;
@@ -33,7 +34,7 @@ import static lk.ijse.mychat.client.LoginFormController.username;
 public class ChatUIFormController {
     public Pane paneHeader;
     public ImageView call;
-    public AnchorPane txtClientArea;
+    public VBox txtClientArea;
     public JFXButton btnSend;
     public TextField txtClientMessage;
     public ImageView file;
@@ -42,17 +43,27 @@ public class ChatUIFormController {
     public ImageView emojis;
     public JFXButton close;
     public HBox hBox;
+    public JFXButton btnMinimize;
+    public AnchorPane mainStage;
     Socket socket = null;
     private Client client;
     private BufferedWriter writer;
 
+/*Change the anchor pane which holds messaages into VBox because each message lies top of the first message.*/
+/*The issue of the second message HBox laying on top of the first message HBox is because the HBox instances
+are added directly to the AnchorPane without any layout constraints or positioning. As a result, they overlap
+and stack on top of each other.
+To solve this issue, use a VBox instead of an AnchorPane to hold the message HBox instances.
+The VBox will automatically arrange its child nodes in a vertical stack, ensuring that each message
+is placed below the previous one.*/
 
-    public static void addLabel(String messageFromClient, AnchorPane anchorPane) {
+    /*New Version*/
+
+    public static void addLabel(String messageFromClient, VBox vBox) {
         Platform.runLater(() -> {
             HBox hBox = new HBox();
             Scene scene = new Scene(hBox);
-            scene.getStylesheets().add("lk/ijse/mychat/assets/css/clientuiStyles.css");
-            hBox.getStylesheets().add(".hBox");
+
             hBox.setSpacing(5); // Set the horizontal spacing within the HBox
             hBox.setPadding(new Insets(10));
             hBox.setAlignment(Pos.CENTER_LEFT);
@@ -64,16 +75,15 @@ public class ChatUIFormController {
             textFlow.setPadding(new Insets(5, 10, 5, 10));
             hBox.getChildren().add(textFlow);
 
-            anchorPane.getChildren().add(hBox);
+            vBox.getChildren().add(hBox);
         });
     }
 
-    public static void addImage(File fileToDownload, AnchorPane anchorPane, String senderName) {
+    public static void addImage(File fileToDownload, VBox vBox, String senderName) {
         Platform.runLater(() -> {
             HBox hBox = new HBox();
             Scene scene = new Scene(hBox);
-            scene.getStylesheets().add("lk/ijse/mychat/assets/css/clientuiStyles.css");
-            hBox.getStylesheets().add(".hBox");
+
             VBox vBox1 = new VBox();
             hBox.setSpacing(5); // Set the horizontal spacing within the HBox
             hBox.setPadding(new Insets(10));
@@ -119,8 +129,7 @@ public class ChatUIFormController {
             if (file != null) {
                 HBox hBox = new HBox();
                 Scene scene = new Scene(hBox);
-                scene.getStylesheets().add("lk/ijse/mychat/assets/css/clientuiStyles.css");
-                hBox.getStylesheets().add(".hBox");
+
                 hBox.setSpacing(5); // Set the horizontal spacing within the HBox
                 hBox.setPadding(new Insets(10));
                 hBox.setAlignment(Pos.BASELINE_LEFT);
@@ -142,8 +151,7 @@ public class ChatUIFormController {
                     System.out.println("File Extension: " + fileExtension);
                     HBox hBox1 = new HBox();
                     Scene scene1 = new Scene(hBox1);
-                    scene1.getStylesheets().add("lk/ijse/mychat/assets/css/clientuiStyles.css");
-                    hBox1.getStylesheets().add(".hBox1");
+
                     hBox1.setSpacing(5); // Set the horizontal spacing within the HBox
                     hBox1.setPadding(new Insets(10));
                     hBox1.setAlignment(Pos.BASELINE_LEFT);
@@ -206,5 +214,16 @@ public class ChatUIFormController {
     public void emojiOnAction(MouseEvent mouseEvent) {
     }
 
+
+    public void btnMinimizeOnAction(ActionEvent actionEvent) {
+        btnMinimize.setOnAction(event -> {
+            Window window = mainStage.getScene().getWindow();
+            System.out.println("Caught Window: " + window);
+            if (window instanceof Stage) {
+                Stage stage = (Stage) window;
+                stage.setIconified(true); // Minimize the window
+            }
+        });
+    }
 
 }

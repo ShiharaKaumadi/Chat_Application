@@ -38,8 +38,8 @@ public class LoginFormController {
                 host = txtHost.getText();
                 Stage stage = new Stage();
                 stage.setScene(scene);
-
                 stage.setResizable(false);
+                scene.getStylesheets().add("lk/ijse/mychat/assets/css/clientuiStyles.css");
                 stage.centerOnScreen();
                 stage.show();
             } else {
@@ -48,8 +48,8 @@ public class LoginFormController {
                 host = "localhost";
                 Stage stage = new Stage();
                 stage.setScene(scene);
-                scene.getStylesheets().add("lk/ijse/mychat/assets/css/clientuiStyles.css");
                 stage.setResizable(false);
+                scene.getStylesheets().add("lk/ijse/mychat/assets/css/clientuiStyles.css");
                 stage.centerOnScreen();
                 stage.show();
             }
